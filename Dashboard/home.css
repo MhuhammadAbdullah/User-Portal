@@ -1,0 +1,588 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Poppins:wght@100;200;300;400&display=swap');
+
+
+:root {
+    --dark1: #0000004d;
+    --dark2: #ffffff;
+    --dark3: #000;
+    --dark4: #2d3135;
+    --dark5: #424549;
+    --dark6: #fff;
+    --dark7: #9c9c9c;
+    --dark8: #dae0e7;
+    --dark9: #262a2e;
+    --red1: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background: linear-gradient(var(--red1) 50%, var(--dark2) 50%);
+}
+
+
+.container {
+    padding: 30px;
+    box-shadow: 3px 3px 20px var(--dark1);
+    background: var(--dark3);
+    border-radius: 10px;
+    margin: 30px;
+    margin-top: 90px;
+}
+
+.container header .filterEntries {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filterEntries .entries {
+    color: var(--dark8);
+}
+
+.filterEntries .entries select,
+.filterEntries .filter input {
+    padding: 7px 10px;
+    border: 1px solid var(--dark6);
+    color: var(--dark8);
+    background: var(--dark4);
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.filterEntries .entries select {
+    padding: 5px 10px;
+}
+
+.filterEntries .filter {
+    display: flex;
+    align-items: center;
+}
+
+.filter label {
+    color: var(--dark8);
+    margin-right: 5px;
+}
+
+
+.filter input:focus {
+    border-color: var(--dark7);
+}
+
+.container header .addMemberBtn {
+    margin-bottom: 15px;
+}
+
+header .addMemberBtn button,
+.popup header .closeBtn,
+.popup footer .submitBtn {
+    padding: 9px 14px;
+    color: var(--dark8);
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    pointer-events: auto;
+    outline: none;
+    border: 1px solid var(--dark6);
+    background: var(--dark4);
+    border-radius: 5px;
+}
+
+.addMemberBtn button:hover {
+    background: var(--dark5);
+}
+
+
+.container table {
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table .heading {
+    background: var(--dark5);
+    background: transparent;
+    color: var(--dark8);
+}
+
+table .heading th:hover {
+    background: var(--dark4);
+    transition: 0.3s;
+}
+
+table tr th,
+table tr td {
+    padding: 3px 15px;
+    color: var(--dark8);
+    vertical-align: middle;
+}
+
+table tr th {
+    padding: 12px 15px;
+}
+
+table tr td:nth-child(1),
+table tr td:nth-child(2) {
+    text-align: center;
+}
+
+table tr td img {
+    vertical-align: middle;
+}
+
+table tr:hover {
+    cursor: pointer;
+    background: var(--dark9);
+}
+
+table tr td {
+    border-bottom: 1px solid var(--dark6);
+}
+
+table tbody tr:first-child td {
+    border-top: 1px solid var(--dark6);
+}
+
+table tbody tr:nth-child(odd) {
+    background: var(--dark9);
+}
+
+table tbody tr:nth-child(odd)>td:nth-child(3) {
+    background: var(--dark4);
+}
+
+table tr td {
+    font-size: 15px;
+}
+
+table td button {
+    margin: 0 3px;
+    padding: 5px;
+    width: 35px;
+    background: var(--dark5);
+    color: var(--dark8);
+    font-size: 16px;
+    cursor: pointer;
+    pointer-events: auto;
+    outline: none;
+    border: 1px solid var(--dark7);
+}
+
+.container footer {
+    margin-top: 25px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container footer span {
+    color: var(--dark8);
+}
+
+footer .pagination {
+    display: flex;
+}
+
+
+footer .pagination button {
+    width: 40px;
+    padding: 5px 0;
+    color: var(--dark8);
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    pointer-events: auto;
+    outline: none;
+    border: 1px solid var(--dark6);
+    border-left: none;
+    margin: 0;
+}
+
+.pagination button:first-child {
+    width: 85px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left: 1px solid var(--dark6);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.pagination button:last-child {
+    width: 85px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.pagination button.active,
+.pagination button:hover {
+    background: var(--red1);
+}
+
+
+.pagination button.act:first-child {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pagination button.act:last-child {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+table tr .empty {
+    padding: 6px;
+    background: var(--dark9);
+}
+
+
+
+/* Popup Form */
+
+.dark_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.popup {
+    border-radius: 5px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3);
+    background: var(--dark6);
+    transition: 0.4s;
+    user-select: none;
+    transform: scale(0.7);
+    opacity: 0;
+    visibility: hidden;
+    width: 650px; /*Reduced width */
+    /* height: 690px; */
+    margin-top: 50px;
+    /*padding: 10px 15px; Reduced padding
+    border-radius: 5px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3);
+    background: var(--dark6);
+    transition: 0.4s;
+    user-select: none;
+    transform: scale(0.7);
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 50px; */
+}
+
+.popup header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--dark7);
+    /* padding: 10px 20px; */
+    padding: 8px 15px;
+}
+
+.popup header #closeBtn {
+    font-size: 30px;
+    font-weight: 300;
+    padding: 5px 5px;
+    width: 25px;
+    height: 25px;
+    background-color: transparent; /* No background */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer on hover */
+    position: absolute; /* Position it absolutely within the popup */
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.popup header #closeBtn i{
+color: #000;
+}
+.popup header #closeBtn i:hover{
+    color: #ae2012;
+}
+.popup footer .submitBtn{
+    background: #000;
+}
+.popup footer .submitBtn:hover {
+    border-color: var(--dark7);
+    transition: 0.3s;
+}
+
+.popup footer {
+    border-top: 1px solid var(--dark7);
+    /* padding: 12px 20px; */
+    padding: 8px 15px;
+    text-align: right;
+}
+
+.popup form {
+    /* padding: 10px 20px; */
+    display: flex;
+    align-items: flex-start;
+     padding: 8px 15px; /*Smaller padding
+    display: flex; */
+    flex-direction: row;
+    /* Stack inputs vertically */
+    gap: 10px;
+    /* Add spacing between inputs */
+}
+
+.popup .imgholder {
+    /* width: 150px;
+    height: 150px; */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    /* margin-right: 50px;
+    margin-top: 15px; */
+
+    width: 150px;/* Smaller image size */
+    height: 150px;
+    margin-right: 20px;/*Reduced margin*/
+    margin-top: 10px;
+}
+
+.popup .imgholder .upload {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    display: none;
+}
+
+.imgholder:hover .upload {
+    display: flex;
+}
+
+.imgholder .upload input {
+    display: none;
+}
+
+.imgholder .upload i {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 300;
+}
+
+.imgholder .img {
+    width: 100%;
+    height: 100%;
+}
+
+form .inputFieldContainer .nameField,
+form .inputFieldContainer .ageCityField,
+form .inputFieldContainer .postSalary {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+form .inputFieldContainer .nameField input,
+form .inputFieldContainer .ageCityField input,
+form .inputFieldContainer .postSalary input {
+    width: 200px;
+}
+
+.inputFieldContainer .form_control {
+    margin: 10px 0;
+}
+
+.inputFieldContainer .form_control label {
+    display: block;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.form_control input {
+    padding: 10px;
+    border: 1px solid #000;
+    color: #000;
+    background: #cad2c5;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.form_control input:focus,
+.form_control input:valid {
+    border-color: #000;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    display: none;
+}
+
+
+.active {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: none;
+    margin-top: 50px;
+}
+
+.alert .icon {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.alert .message {
+    flex-grow: 1;
+}
+
+.alert .close {
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.alert.success {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    color: #4caf50;
+}
+
+.alert.success .icon,
+.alert.success .message,
+.alert.success .close i {
+    color: #4caf50;
+}
+
+.alert.error {
+    background-color: #ffebee;
+    border-left: 4px solid #f44336;
+    color: #f44336;
+}
+
+.alert.error .icon,
+.alert.error .message,
+.alert.error .close i {
+    color: #f44336;
+}
+
+.alert.warning {
+    background-color: #fff8e1;
+    border-left: 4px solid #ffc107;
+    color: #ffa000;
+}
+
+.alert.warning .icon,
+.alert.warning .message,
+.alert.warning .close i {
+    color: #ffa000;
+}
+
+
+/* Navbar styling */
+.container {
+    padding-top: 60px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    background-color: #000;
+    color: white;
+position: sticky;
+    width: 100%;
+    /* background-color: #333; */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    color: white;
+    font-size: 20px;
+    padding: 14px 20px;
+}
+
+/* Common button styles for profile and logout */
+.navbar button {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745; /* Green background for buttons */
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar button:hover {
+    background-color: #218838; /* Darker green on hover */
+    color: white;
+}
+
+/* Logout button specific style */
+#logout {
+    background-color: #dc3545; /* Red background for logout */
+}
+
+#logout:hover {
+    background-color: #ff4d4d; /* Lighter red on hover */
+}
+
+
+ 
+

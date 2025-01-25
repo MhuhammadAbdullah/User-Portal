@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>JavaScript CURD</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- Success Alert -->
+    <div id="alert-success" class="alert success" style="display: none;">
+        <span class="icon">✔</span>
+        <span class="message">Successfully Submitted</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <!-- Error Alert -->
+    <div id="alert-error" class="alert error" style="display: none;">
+        <span class="icon">✖</span>
+        <span class="message">Please Fix The Error</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <!-- Warning Alert -->
+    <div id="alert-warning" class="alert warning" style="display: none;">
+        <span class="icon">!</span>
+        <span class="message">Invalid input. Check Again</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">My Dashboard</div>
+        <div>
+            <button id="profile">Profile</button>
+            <button id="logout">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="filterEntries">
+                <div class="entries">
+                    Show <select name="" class="showEntries" id="tableSize">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select> entries
+                </div>
+                <div class="filter">
+                    <label for="search">Search:</label>
+                    <input type="search" id="filterData" placeholder="Search...">
+
+                </div>
+            </div>
+            <div class="addMemberBtn">
+                <button id="newMemberAddBtn">Add New Member</button>
+            </div>
+        </header>
+
+        <table>
+            <thead>
+                <tr class="heading">
+                    <th>SL No</th>
+                    <th>Picture</th>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                    <th>Start Date</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="userInfo"></tbody>
+        </table>
+
+        <footer>
+            <span class="showEntries">Showing 1 to 10 of 50 entries</span>
+            <div class="pagination"></div>
+        </footer>
+    </div>
+
+    <div id="darkBg" class="dark_bg">
+        <div id="popupForm" class="popup">
+            <header>
+                <h2 class="modalTitle" id="modalTitle">Fill the Form</h2>
+                <button id="closeBtn"><i class="fa-solid fa-square-xmark"></i></button>
+            </header>
+            <div class="body">
+                <form id="myForm">
+                    <!-- <div class="imgholder">
+                        <label for="uploadimg" class="upload">
+                            <input type="file" id="uploadimg" class="picture">
+                            <i class="fa-solid fa-plus"></i>
+                        </label>
+                        <img id="imgInput" src="./img/default-profile-account.jpg" alt="Uploaded Image" width="150"
+                            height="150" class="img">
+                    </div> -->
+                    <div class="imgholder" id="imgHolder">
+                        <label for="uploadimg" class="upload">
+                            <input type="file" id="uploadimg" class="picture">
+                            <i class="fa-solid fa-plus"></i>
+                        </label>
+                        <img id="imgInput" src="./img/default-profile-account.jpg" alt="Uploaded Image" width="150"
+                            height="150" class="img">
+                    </div>
+                    <div class="inputFieldContainer">
+                        <div class="nameField">
+                            <div class="form_control">
+                                <label for="fName">First Name:</label>
+                                <input type="text" id="fName" required>
+                            </div>
+                            <div class="form_control">
+                                <label for="lName">Last Name:</label>
+                                <input type="text" id="lName" required>
+                            </div>
+                        </div>
+                        <div class="ageCityField">
+                            <div class="form_control">
+                                <label for="age">Age:</label>
+                                <input type="number" id="age" required>
+                            </div>
+                            <div class="form_control">
+                                <label for="city">City:</label>
+                                <input type="text" id="city" required>
+                            </div>
+                        </div>
+                        <div class="postSalary">
+                            <div class="form_control">
+                                <label for="position">Position:</label>
+                                <input type="text" id="position" required>
+                            </div>
+                            <div class="form_control">
+                                <label for="salary">Salary:</label>
+                                <input type="text" id="salary" required>
+                            </div>
+                        </div>
+                        <div class="form_control">
+                            <label for="sDate">Start Date:</label>
+                            <input type="date" id="sDate" required>
+                        </div>
+                        <div class="form_control">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form_control">
+                            <label for="phone">Phone:</label>
+                            <input type="number" id="phone" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <footer class="popupFooter" id="popupFooter">
+                <button form="myForm" class="submitBtn" id="submitBtn">Submit</button>
+            </footer>
+        </div>
+    </div>
+
+
+    <!-- EDIT MODALE -->
+
+
+    <div id="darkBg" class="dark_bg">
+        <div id="popupForm" class="popup">
+            <header>
+                <h2 class="modalTitle" id="modalTitle">Update The Form</h2>
+                <button id="closeBtn">&times;</button>
+            </header>
+            <div class="body">
+                <form id="myForm">
+                    <div class="imgholder" id="imgHolder">
+                        <label for="uploadimg" class="upload">
+                            <input type="file" id="imgInputField" class="picture">
+                            <i class="fa-solid fa-plus"></i>
+                        </label>
+                        <img id="imgInput" src="./img/default-profile-account.jpg" alt="Uploaded Image" width="150"
+                            height="150" class="img">
+                    </div>
+
+                    <!-- <div class="imgholder">
+                        <label for="uploadimg" class="upload">
+                            <input type="file" id="uploadimg" class="picture">
+                            <i class="fa-solid fa-plus"></i>
+                        </label>
+                        <img id="imgInput" src="./img/default-profile-account.jpg" alt="Uploaded Image" width="150" height="150"
+                            class="img">
+                    </div> -->
+
+                    <div class="inputFieldContainer">
+                        <div class="nameField">
+                            <div class="form_control">
+                                <label for="fName">First Name:</label>
+                                <input type="text" id="fName" required>
+                            </div>
+                            <div class="form_control">
+                                <label for="lName">Last Name:</label>
+                                <input type="text" id="lName" required>
+                            </div>
+                        </div>
+                        <div class="ageCityField">
+                            <div class="form_control">
+                                <label for="age">Age:</label>
+                                <input type="number" id="age" required>
+                            </div>
+                            <div class="form_control">
+                                <label for="city">City:</label>
+                                <input type="text" id="city" required>
+                            </div>
+                        </div>
+                        <div class="postSalary">
+                            <div class="form_control">
+                                <label for="position">Position:</label>
+                                <input type="text" id="position" required>
+                            </div>
+                            <div class="form_control">
+                                <label for="salary">Salary:</label>
+                                <input type="text" id="salary" required>
+                            </div>
+                        </div>
+                        <div class="form_control">
+                            <label for="sDate">Start Date:</label>
+                            <input type="date" id="sDate" required>
+                        </div>
+                        <div class="form_control">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form_control">
+                            <label for="phone">Phone:</label>
+                            <input type="number" id="phone" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <footer class="popupFooter" id="popupFooter">
+                <button form="myForm" class="submitBtn" id="submitBtn">Update</button>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('logout').addEventListener('click', function () {
+            alert('Logged out successfully!');
+        });
+
+        document.getElementById('profile').addEventListener('click', function () {
+            alert('Redirecting to Profile Page');
+        });
+    </script>
+    <script type="module" src="finalhome.js"></script>
+</body>
+
+</html>

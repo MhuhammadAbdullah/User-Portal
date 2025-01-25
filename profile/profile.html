@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Profile Page</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+     <!-- Success Alert -->
+     <div id="alert-success" class="alert success" style="display: none;">
+        <span class="icon">✔</span>
+        <span class="message">Successfully Submitted</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <!-- Error Alert -->
+    <div id="alert-error" class="alert error" style="display: none;">
+        <span class="icon">✖</span>
+        <span class="message">Please Fix The Error</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <!-- Warning Alert -->
+    <div id="alert-warning" class="alert warning" style="display: none;">
+        <span class="icon">!</span>
+        <span class="message">Invalid input. Check Again</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <!-- Profile Section -->
+     
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>Welcome! <span id="username-display">JohnDoe</span>, to your Profile</h1>
+        </div>
+        <div class="profile-card">
+
+            <div class="profile-picture">
+                <div class="image-container">
+                    <img id="profile-img" src="../Dashboard/img/default-profile-account.jpg" alt="Profile Picture" title="Click to upload">
+                    <div class="edit-overlay"><i class="fa-solid fa-pen-to-square"></i></div>
+                </div>
+                <input type="file" id="upload-picture" accept="image/*" style="display: none;">
+            </div>
+            
+        
+            <div class="profile-info">
+                <form id="profile-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" value="JohnDoe" readonly>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </form>
+                <button class="btn" id="update-password">Update Password</button>
+                <button class="btn" id="logout">Logout</button>
+                <button class="btn" id="go-back">Go Back</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="password-popup" class="popup">
+        <div class="popup-content">
+            <button class="close" id="close-popup">&times;</button>
+            <h2>Update Password</h2>
+            <form id="password-form">
+                <label for="current-password">Current Password:</label>
+                <input type="password" id="current-password" required>
+    
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" required>
+    
+                <label for="confirm-password">Confirm New Password:</label>
+                <input type="password" id="confirm-password" required>
+    
+                <button class="btn" type="submit">Update Password</button>
+            </form>
+        </div>
+    </div>
+    
+    <script type="module" src="profile.js"></script>
+</body>
+</html>

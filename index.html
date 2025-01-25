@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Success Alert -->
+    <div id="alert-success" class="alert success" style="display: none;">
+        <span class="icon">✔</span>
+        <span class="message">Successfully Submitted</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <!-- Error Alert -->
+    <div id="alert-error" class="alert error" style="display: none;">
+        <span class="icon">✖</span>
+        <span class="message">Please Fix The Error</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <!-- Warning Alert -->
+    <div id="alert-warning" class="alert warning" style="display: none;">
+        <span class="icon">!</span>
+        <span class="message">Invalid input. Check Again</span>
+        <span class="close" onclick="this.parentElement.style.display='none';"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+
+    <div class="container">
+        <div class="curved-shape"></div>
+        <div class="curved-shape2"></div>
+
+        <!-- Login Form -->
+        <div class="form-box Login" id="login-form-box">
+            <h2 class="animation" style="--D:0; --S:21">Login</h2>
+            <form action="#" id="login-form">
+                <div class="input-box animation" style="--D:1; --S:22">
+                    <input type="email" id="login-email" name="email" required>
+                    <label for="email">Email</label>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-box animation" style="--D:2; --S:23">
+                    <input type="password" id="login-password" name="password" required>
+                    <label for="password">Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div class="forgot-password animation" style="--D:4; --S:25">
+                    <a href="#" id="forgot-password-link">Forgot Password?</a>
+                </div>
+                <div class="input-box animation" style="--D:3; --S:24">
+                    <button class="btn" type="submit">Login</button>
+                </div>
+
+                <div class="social-login animation" style="--D:5; --S:26">
+                    <p><b>Or</b></p>
+                    <button class="social-btn google" id="google-login-btn"><img src="assets/google_logo-google_icongoogle-512.webp"
+                            alt=""><span><p>Countinue with Google</p></span></button>
+                    <!-- <button class="social-btn facebook"><img src="assets/facebook-512.webp" alt=""></button> -->
+                </div>
+                <div class="register-link animation" style="--D:6; --S:27">
+                    <p>Don't have an account? <a href="#" class="Signup">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Reset Password Form -->
+        <div class="form-box ResetPassword" id="reset-password-form-box" style="display: none;">
+            <h2 class="animation" style="--D:0; --S:21">Reset Password</h2>
+            <form action="#" id="reset-password-form">
+                <div class="input-box animation" style="--D:1; --S:22">
+                    <input type="email" id="reset-email" name="email" required>
+                    <label for="email">Enter your email</label>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-box animation" style="--D:2; --S:23">
+                    <button class="btn" type="submit">Send Reset Link</button>
+                </div>
+                <div class="back-to-login-link animation" style="--D:3; --S:24">
+                    <p><a href="#" id="back-to-login-link">Back to Login</a></p>
+                </div>
+            </form>
+        </div>
+    
+
+        <div class="info-content Login">
+            <h2 class="animation" style="--D:0; --S:20">WELCOME BACK!</h2>
+            <P class="animation" style="--D:1; --S:21">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit,
+                non!</P>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form-box Register">
+            <h2 class="animation" style="--li:17; --S:0;">Sign Up</h2>
+            <form action="#" id="signup-form">
+                <div class="input-box animation" style="--li:18; --S:1;">
+                    <input type="text" id="signup-username" name="username" required>
+                    <label for="username">Username</label>
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box animation" style="--li:18; --S:1;">
+                    <input type="email" id="signup-email" name="email" required>
+                    <label for="email">Email</label>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-box animation" style="--li:19; --S:2;">
+                    <input type="password" id="signup-password" name="password" required>
+                    <label for="password">Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div class="input-box animation" style="--li:20; --S:3;">
+                    <button class="btn" type="submit">Sign Up</button>
+                </div>
+                
+                <div class="social-login animation" style="--li:21; --S:4">
+                    <p><b>Or</b></p>
+                    <button class="social-btn google" id="google-signup-btn"><img src="assets/google_logo-google_icongoogle-512.webp"
+                            alt=""><span><p>Countinue with Google</p></span></button>
+                    <!-- <button class="social-btn facebook"><img src="assets/facebook-512.webp" alt=""></button> -->
+                </div>
+                <div class="register-link animation" style="--li:22; --S:5;">
+                    <p>Already have an account? <a href="#" class="Signin">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="info-content Signup">
+            <h2 class="animation" style="--li:17; --S:0;">WELCOME BACK!</h2>
+            <P class="animation" style="--li:18; --S:1;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit,
+                non!</P>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
